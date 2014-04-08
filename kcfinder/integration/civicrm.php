@@ -63,6 +63,9 @@ function checkAuthentication() {
     case 'WordPress':
       $auth_function = 'authenticate_wordpress';
       break;
+    case 'Standalone':
+      $auth_function = 'authenticate_standalone';
+      break;
     }
     if(!$auth_function($config)) {
       CRM_Core_Error::fatal(ts("You must be logged in with proper permissions to edit, add, or delete uploaded images."));
@@ -134,6 +137,17 @@ function authenticate_joomla($config) {
   return true;
 }
 
+function authenticate_standalone($config) {
+  // make sure user has access to civicrm
+  CRM_Utils_System::loadBootStrap();
+  require_once "CRM/Core/Permission.php";
+  if (CRM_Core_Permission::check('access CiviCRM')) {
+    return true;
+  }
+  return false;
+}
+
+session_start();
 checkAuthentication( );
 
 spl_autoload_register('__autoload');
