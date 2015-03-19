@@ -138,6 +138,7 @@ function authenticate_joomla($config) {
 }
 
 function authenticate_standalone($config) {
+  session_start();
   // make sure user has access to civicrm
   CRM_Utils_System::loadBootStrap();
   require_once "CRM/Core/Permission.php";
@@ -147,7 +148,6 @@ function authenticate_standalone($config) {
   return false;
 }
 
-session_start();
 checkAuthentication( );
 
 spl_autoload_register('__autoload');
