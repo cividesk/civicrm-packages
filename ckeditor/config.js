@@ -36,5 +36,13 @@ CKEDITOR.editorConfig = function( config ) {
 	// Make dialogs simpler.
 	config.removeDialogTabs = 'image:advanced';
 	config.allowedContent = true;
-	config.startupShowBorders = false;	
+	config.startupShowBorders = false;
+
+	// Custom configuration for USCJ
+	if (window.location.hostname === 'crm.uscj.org') {
+		config.removeButtons = 'Subscript,Superscript';
+		config.extraPlugins = 'justify,div';
+		// Enable the automatic speel check (SCAYT)
+		config.scayt_autoStartup = true;
+	}
 };

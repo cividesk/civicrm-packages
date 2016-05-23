@@ -9,8 +9,11 @@ Then in the file config.js that was downloaded with the above:
 - in config.removeButtons, replace 'Underline' with 'Strike'
 - in config.removeDialogTabs, remove 'link:advanced';
 
-Add Following line-
-  config.allowedContent = true; // Allow copy content with background color (disable the filter)
-  config.startupShowBorders = false; // Hide the table border
+Add Following line in file config.js
+    // Make dialogs simpler.
+	config.removeDialogTabs = 'image:advanced';
+	config.allowedContent = true; // Allow copy content with background color (disable the filter)
+    config.startupShowBorders = false; // Hide the table border
+    [... and all that follows until end of file (cf. previous version) ...]
 
 Don't forget to clear your browser cache since the icon file will have changed!
